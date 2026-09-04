@@ -3,7 +3,7 @@
 import { HandHeart, Mail, Sprout } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type MouseEvent } from 'react';
 
 const links = [
   { href: '/our-story', label: 'Our Story' },
@@ -19,13 +19,18 @@ export function Wordmark() {
 export function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigateFromHeader = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    window.location.assign(event.currentTarget.href);
+  };
   useEffect(() => {
     const update = () => setIsScrolled(window.scrollY > 56);
     update();
     window.addEventListener('scroll', update, { passive: true });
     return () => window.removeEventListener('scroll', update);
   }, []);
-  return <header className={`site-header ${isScrolled ? 'site-header-scrolled' : ''}`}><div className="header-inner"><Wordmark /><nav className="desktop-nav" aria-label="Primary navigation">{links.map((link) => <Link href={link.href} key={link.href} aria-current={pathname === link.href ? 'page' : undefined} className={pathname === link.href ? 'is-active' : undefined}>{link.label}</Link>)}</nav><Link className="button button-sun header-support" href="/get-involved#support" aria-current={pathname === '/get-involved' ? 'page' : undefined}>Support the Partnership <span aria-hidden="true">→</span></Link><details className="mobile-menu"><summary aria-label="Open navigation"><span></span><span></span><span></span></summary><nav aria-label="Mobile navigation">{links.map((link) => <Link href={link.href} key={link.href} aria-current={pathname === link.href ? 'page' : undefined} className={pathname === link.href ? 'is-active' : undefined}>{link.label}</Link>)}<Link className="button button-sun" href="/get-involved#support">Support the Partnership</Link></nav></details></div></header>;
+  return <header className={`site-header ${isScrolled ? 'site-header-scrolled' : ''}`}><div className="header-inner"><Wordmark /><nav className="desktop-nav" aria-label="Primary navigation">{links.map((link) => <Link href={link.href} onClick={navigateFromHeader} key={link.href} aria-current={pathname === link.href ? 'page' : undefined} className={pathname === link.href ? 'is-active' : undefined}>{link.label}</Link>)}</nav><Link className="button button-sun header-support" href="/get-involved#support" onClick={navigateFromHeader} aria-current={pathname === '/get-involved' ? 'page' : undefined}>Support the Partnership <span aria-hidden="true">→</span></Link><details className="mobile-menu"><summary aria-label="Open navigation"><span></span><span></span><span></span></summary><nav aria-label="Mobile navigation">{links.map((link) => <Link href={link.href} onClick={navigateFromHeader} key={link.href} aria-current={pathname === link.href ? 'page' : undefined} className={pathname === link.href ? 'is-active' : undefined}>{link.label}</Link>)}<Link className="button button-sun" href="/get-involved#support" onClick={navigateFromHeader}>Support the Partnership</Link></nav></details></div></header>;
 }
 
 const footerCalls = [
