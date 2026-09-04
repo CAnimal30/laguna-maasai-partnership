@@ -44,7 +44,7 @@ export function Footer() {
 function SiteEffects() {
   useEffect(() => {
     document.documentElement.classList.add('motion-ready');
-    const targets = document.querySelectorAll<HTMLElement>('.place-pair article, .impact-list article, .timeline article, .path-grid article, .jewelry-grid');
+    const targets = document.querySelectorAll<HTMLElement>('.relationship-spread article, .impact-list article, .timeline article, .path-grid article, .jewelry-grid');
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), { threshold: 0.14 });
     targets.forEach((target) => observer.observe(target));
     return () => { observer.disconnect(); document.documentElement.classList.remove('motion-ready'); };
