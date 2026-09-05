@@ -33,3 +33,12 @@ test('Participation remains honest and FAQs use native disclosures', async () =>
   assert.equal((html.match(/<summary>[^<]/g) || []).length, 5);
   assert.doesNotMatch(html, /<form[ >]/);
 });
+
+test('Archive has four independently addressable native project disclosures', async () => {
+  const html = await (await fetch(new URL('/impact', origin))).text();
+  for (const id of ['desks', 'energy', 'education', 'water']) {
+    assert.ok(html.includes(`<details id="${id}"`));
+  }
+  assert.match(html, /https:\/\/www.lbhsmun.org\/past-successes.html/);
+  assert.match(html, /Current status to confirm/);
+});

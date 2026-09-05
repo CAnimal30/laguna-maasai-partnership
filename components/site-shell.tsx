@@ -2,6 +2,7 @@
 /* oxlint-disable next/no-html-link-for-pages -- Native navigation intentionally avoids client-router dependency for this informational site. */
 'use client';
 
+import { Sprout } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
@@ -13,7 +14,7 @@ const links = [
 ];
 
 export function Wordmark() {
-  return <a className="wordmark" href="/" aria-label="Return to the Laguna Maasai Partnership home page"><span className="wordmark-leaf" aria-hidden="true">❧</span><span>Laguna Maasai<br />Partnership</span></a>;
+  return <a className="wordmark" href="/" aria-label="Return to the Laguna Maasai Partnership home page"><Sprout className="wordmark-leaf" aria-hidden="true" strokeWidth={1.2} /><span>Laguna Maasai<br />Partnership</span></a>;
 }
 
 export function Header() {
@@ -30,10 +31,19 @@ export function Header() {
 }
 
 export function Footer() {
-  return <footer className="site-footer"><div className="frame footer-grid"><div><Wordmark /><p>A student-led initiative within<br />Laguna Beach High School Model United Nations.</p></div><div className="footer-location"><p>Laguna Beach, California, USA</p><p>Partnership details are being reviewed before public launch.</p></div><nav aria-label="Footer navigation">{links.map((link) => <a href={link.href} key={link.href}>{link.label}</a>)}</nav></div><div className="frame footer-bottom"><span>© Laguna Maasai Partnership</span><span>Built with care for an ongoing relationship.</span></div></footer>;
+  return <footer className="site-footer"><div className="frame footer-grid"><div><Wordmark /><p>A student-led initiative within<br />Laguna Beach High School Model United Nations.</p></div><div className="footer-location"><p>Laguna Beach, California, USA</p><p>Partnership details are being reviewed before public launch.</p></div><nav aria-label="Footer navigation">{links.map((link) => <a href={link.href} key={link.href}>{link.label}</a>)}</nav></div><div className="frame footer-bottom"><span>© Laguna Maasai Partnership</span><span>Laguna Beach ↔ Oloolaimutia</span></div></footer>;
 }
 
 function SiteEffects() {
+  useEffect(() => {
+    const openLinkedRecord = () => {
+      const target = document.getElementById(window.location.hash.slice(1));
+      if (target instanceof HTMLDetailsElement) target.open = true;
+    };
+    openLinkedRecord();
+    window.addEventListener('hashchange', openLinkedRecord);
+    return () => window.removeEventListener('hashchange', openLinkedRecord);
+  }, []);
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
     const targets = document.querySelectorAll<HTMLElement>('.reveal');
