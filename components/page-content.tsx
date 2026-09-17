@@ -58,6 +58,27 @@ export function GetInvolvedPage() {
   return <Page><section className="participate-cover"><div className="frame"><Label light>Get involved</Label><h1>Bring your curiosity.<br /><em>Find your part.</em></h1><p>Students, families, alumni, and neighbors all have a place in the conversation. Start with the story, then explore what participation could look like.</p></div></section><ChapterNav items={[["participate", "Ways to take part"], ["support", "Giving"], ["questions", "Questions"]]} /><section id="participate" className="participation-section section-cream"><div className="frame"><div className="section-heading"><Label>Choose your starting point</Label><h2>A little curiosity<br /><em>can go a long way.</em></h2></div><div className="participation-grid"><article className="participation-card share-card"><Label>01 / Anyone can start here</Label><h3>Pass the<br /> story along.</h3><p>Know someone interested in student leadership, education, or the jewelry program? Give them a place to start.</p><ShareStory /></article><article className="participation-card"><Label>02 / Students</Label><h3>Learn.<br /> Organize. Lead.</h3><p>The partnership sits within LBHS MUN. Current meeting and joining details will be added after the program confirms them.</p><LinkArrow href="/our-story">Get to know the initiative</LinkArrow></article><article className="participation-card"><Label>03 / Families & community</Label><h3>Make it<br /> a shared effort.</h3><p>Explore the jewelry program or learn how past student fundraisers brought people together. Current event and contact details are pending.</p><LinkArrow href="/jewelry">Explore the jewelry program</LinkArrow></article></div></div></section><section id="support" className="support-details"><div className="frame availability-layout"><div><Label light>Support the partnership</Label><h2>Good intentions.<br /><em>Clear information.</em></h2></div><div><span className="record-tag">Online giving is not open</span><p>Online donations are not available yet. Before giving opens, you will be able to see the receiving account, intended use of funds, payment method, fees, and tax information.</p><p className="notice">The official payment destination and contact route are being confirmed. This website does not collect payments or donor details.</p><LinkArrow href="/impact" light>Understand the past work</LinkArrow></div></div></section><Questions /></Page>;
 }
 
+export function CreditsPage() {
+  return <Page>
+    <section className="credits-page" aria-labelledby="credits-title">
+      <div className="frame credits-content">
+        <p className="eyebrow">A note of thanks</p>
+        <h1 id="credits-title">Credits</h1>
+        <div className="credits-details">
+          <p className="credits-label">Website made by</p>
+          <ul className="creator-list">
+            <li><a href="mailto:clark.alden@lbusd.org">Clark Alden</a></li>
+            <li><a href="mailto:aidan.dwight@lbusd.org">Aidan Dwight</a></li>
+            <li><a href="mailto:elias.arum@lbusd.org">Eli Arum</a></li>
+            <li><a href="mailto:roman.fiske@lbusd.org">Roman Fiske</a></li>
+          </ul>
+          <p className="infrastructure-credit">Website &amp; digital infrastructure supported by <a href="https://safarimatcher.com/" target="_blank" rel="noreferrer">SafariMatcher</a></p>
+        </div>
+      </div>
+    </section>
+  </Page>;
+}
+
 function Questions() {
   const questions: [string, React.ReactNode][] = [
     ['Is the partnership part of LBHS MUN?', <>Yes. It is a student-led initiative within Laguna Beach High School Model United Nations. <a href="/our-story">Read how it began.</a></>],

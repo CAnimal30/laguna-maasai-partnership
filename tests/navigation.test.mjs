@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 const origin = process.env.TEST_BASE_URL || 'http://localhost:3000';
-const routes = ['/', '/our-story', '/impact', '/jewelry', '/get-involved'];
+const routes = ['/', '/our-story', '/impact', '/jewelry', '/get-involved', '/credits'];
 const pages = new Map();
 for (const route of routes) {
   test(`Server renders ${route} without client JavaScript`, async () => {
@@ -41,4 +41,14 @@ test('Archive has four independently addressable native project disclosures', as
   }
   assert.match(html, /https:\/\/www.lbhsmun.org\/past-successes.html/);
   assert.match(html, /Current status to confirm/);
+});
+
+test('Credits preserves the requested creator and infrastructure links', async () => {
+  const html = pages.get('/credits') || await (await fetch(new URL('/credits', origin))).text();
+  assert.match(html, /<h1[^>]*>Credits<\/h1>/);
+  for (const href of ['mailto:clark.alden@lbusd.org', 'mailto:aidan.dwight@lbusd.org', 'mailto:elias.arum@lbusd.org', 'mailto:roman.fiske@lbusd.org', 'https://safarimatcher.com/']) {
+    assert.ok(html.includes(`href="${href}"`), `Missing credit link: ${href}`);
+  }
+  assert.match(html, /Website &amp; digital infrastructure supported by/);
+  assert.match(html, /href="\/credits">Credits<\/a>/);
 });
