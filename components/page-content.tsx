@@ -72,7 +72,7 @@ export function CreditsPage() {
             <li><a href="mailto:elias.arum@lbusd.org">Eli Arum</a></li>
             <li><a href="mailto:roman.fiske@lbusd.org">Roman Fiske</a></li>
           </ul>
-          <p className="infrastructure-credit">Website &amp; digital infrastructure supported by <a href="https://safarimatcher.com/" target="_blank" rel="noreferrer">SafariMatcher</a></p>
+          <p className="infrastructure-credit">Website &amp; digital infrastructure supported by <a href="https://safarimatcher.com/?utm_source=laguna-beach-maasai&amp;utm_medium=referral&amp;utm_campaign=website-credit" target="_blank" rel="noreferrer">SafariMatcher</a></p>
         </div>
       </div>
     </section>
