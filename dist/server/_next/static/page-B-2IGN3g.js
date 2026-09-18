@@ -1,0 +1,1 @@
+import{t as e}from"./framework~index~page~page~page~page~layout~page~page~app-page-cache-render~app-page-cache~a~ma2rtxnt-BuU_Y6QF.js";import{n as t}from"./page-content-CWQrYtMh.js";var n=e();function r(){return(0,n.jsx)(t,{})}export{r as default};
