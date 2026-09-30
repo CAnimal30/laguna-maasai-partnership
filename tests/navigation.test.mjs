@@ -46,7 +46,7 @@ test('Archive has four independently addressable native project disclosures', as
 test('Credits preserves the requested creator and infrastructure links', async () => {
   const html = pages.get('/credits') || await (await fetch(new URL('/credits', origin))).text();
   assert.match(html, /<h1[^>]*>Credits<\/h1>/);
-  for (const href of ['mailto:clark.alden@lbusd.org', 'mailto:aidan.dwight@lbusd.org', 'mailto:elias.arum@lbusd.org', 'mailto:roman.fiske@lbusd.org', 'https://safarimatcher.com/']) {
+  for (const href of ['mailto:clark.alden@lbusd.org', 'mailto:aidan.dwight@lbusd.org', 'mailto:elias.arum@lbusd.org', 'mailto:roman.fiske@lbusd.org', 'https://safarimatcher.com/?utm_source=laguna-beach-maasai&amp;utm_medium=referral&amp;utm_campaign=website-credit']) {
     assert.ok(html.includes(`href="${href}"`), `Missing credit link: ${href}`);
   }
   assert.match(html, /Website &amp; digital infrastructure supported by/);
