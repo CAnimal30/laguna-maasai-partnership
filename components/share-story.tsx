@@ -16,5 +16,5 @@ export function ShareStory() {
       setMessage('Select and copy the story link below.');
     }
   }
-  return <div className="share-control"><button className="button button-primary" type="button" onClick={copyLink}>Copy the story link <span aria-hidden="true">↗</span></button><p aria-live="polite" className="share-status">{message}</p>{fallback && <label className="share-fallback">Story link<input readOnly value={fallback} onFocus={event => event.currentTarget.select()} /></label>}<p className="review-note">This review site currently requires owner access.</p></div>;
+  return <div className="share-control"><button className="button button-primary" type="button" onClick={copyLink}>Copy the story link <span aria-hidden="true">↗</span></button><p aria-live="polite" className="share-status">{message}</p>{fallback && <label className="share-fallback">Story link<input readOnly value={fallback} onFocus={event => event.currentTarget.select()} /></label>}</div>;
 }

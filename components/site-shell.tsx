@@ -37,7 +37,7 @@ export function Header() {
 }
 
 export function Footer() {
-  return <footer className="site-footer"><div className="frame footer-grid"><div><BrandLockup className="footer-brand" /><p>A student-led initiative within<br />Laguna Beach High School Model United Nations.</p></div><div className="footer-location"><p>Laguna Beach, California, USA</p><p>Partnership details are being reviewed before public launch.</p></div><nav aria-label="Footer navigation">{links.map((link) => <Link href={link.href} key={link.href}>{link.label}</Link>)}<Link href="/credits">Credits</Link></nav></div><div className="frame footer-bottom"><span>© Laguna Maasai Partnership</span><span>Laguna Beach ↔ Oloolaimutia, Kenya</span></div></footer>;
+  return <footer className="site-footer"><div className="frame footer-grid"><div><BrandLockup className="footer-brand" /><p>A student-led initiative within<br />Laguna Beach High School Model United Nations.</p></div><div className="footer-location"><p>Laguna Beach, California, USA</p><p>Current support and contact details are being confirmed.</p></div><nav aria-label="Footer navigation">{links.map((link) => <Link href={link.href} key={link.href}>{link.label}</Link>)}<Link href="/credits">Credits</Link></nav></div><div className="frame footer-bottom"><span>© Laguna Maasai Partnership</span><span>Laguna Beach ↔ Oloolaimutia, Kenya</span></div></footer>;
 }
 
 function SiteEffects() {
