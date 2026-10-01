@@ -68,3 +68,24 @@
 @media(max-width:1100px){.brand-lockup{gap:8px}.brand-lockup img{width:46px;height:52px}.brand-wordmark{font-size:16px}.site-header.is-condensed .brand-lockup img{width:36px;height:41px}.site-header.is-condensed .brand-wordmark{font-size:13px}}
 @media(max-width:900px){.site-header:not(.is-condensed) .brand-lockup img{width:50px;height:56px}.site-header.is-condensed .brand-lockup img{width:39px;height:44px}.desk-feature{grid-template-columns:.84fr 1.16fr}.desk-number{min-height:315px;padding:30px}.desk-number strong{font-size:clamp(118px,15vw,148px)}.desk-result>span{font-size:15px}.desk-copy{padding:30px}.jewelry-cover figure{justify-self:center}.story-visit{padding:60px 0}}
 @media(max-width:620px){.brand-lockup{gap:8px}.site-header:not(.is-condensed) .brand-lockup img{width:45px;height:50px}.site-header:not(.is-condensed) .brand-wordmark{font-size:15px}.site-header.is-condensed .brand-lockup img{width:36px;height:40px}.site-header.is-condensed .brand-wordmark{font-size:12px}.site-footer .brand-lockup img{width:54px;height:60px}.site-footer .brand-wordmark{font-size:20px}.hero-copy .eyebrow{max-width:370px;font-size:13px;letter-spacing:.07em}.desk-feature{grid-template-columns:1fr}.desk-number{min-height:220px;padding:25px 28px;gap:24px}.desk-meta{gap:10px}.desk-year{font-size:12px}.desk-result{gap:12px}.desk-number strong{font-size:clamp(118px,35vw,148px)}.desk-result>span{max-width:130px;padding-bottom:11px;font-size:15px}.desk-copy{padding:28px 24px}.desk-copy h3{font-size:40px}.desk-copy>p:not(.eyebrow){font-size:16px}.story-photo figcaption{grid-template-columns:auto 1fr;gap:8px}.photo-caption-title{padding-left:10px}.story-photo .photo-caption-context{grid-column:1 / -1;font-size:10px}.story-visit{padding:52px 0}.story-visit-grid{grid-template-columns:1fr;gap:35px}.story-visit figure{width:min(100%,320px)}.story-visit-copy h2{font-size:44px}.story-visit-copy>p:last-child{font-size:16px}.jewelry-cover figure{width:100%;max-width:480px}.jewelry-photo-frame{padding:8px}}
+
+/* Critique follow-up: story first, jewelry image as a deliberate wide editorial plate. */
+.story-photo img{width:100%;height:auto}
+.story-visit-grid{grid-template-columns:minmax(0,1.4fr) minmax(210px,.6fr);gap:clamp(42px,7vw,96px)}
+.story-visit figure{width:min(100%,310px);justify-self:end}
+.story-visit-copy h2{max-width:690px}
+.story-visit-copy>p:last-child{margin-top:22px}
+.story-visit-copy>p+p{max-width:590px;margin-top:17px}
+.jewelry-cover{padding:76px 0 68px;background:#dfc8a5}
+.jewelry-cover .jewelry-editorial-grid{display:block}
+.jewelry-cover h1{max-width:980px;font-size:clamp(58px,7vw,96px);line-height:.94}
+.jewelry-cover h1 em{white-space:nowrap}
+.jewelry-cover .lede{max-width:570px;margin-top:23px;font-size:18px;line-height:1.65}
+.jewelry-cover .button{margin-top:23px}
+.jewelry-beadwork{margin-top:2px}
+.jewelry-photo-frame{overflow:hidden;width:100%;padding:0;background:transparent;box-shadow:none}
+.jewelry-cover .jewelry-photo-frame img{display:block;width:100%;height:auto;max-height:480px;object-fit:cover;object-position:center 57%;border:0;box-shadow:none;transform:none}
+.jewelry-cover figcaption{display:flex;justify-content:space-between;gap:18px;margin:13px 0 0;padding-top:12px;border-top:1px solid #263b5033;font-size:12px;line-height:1.5;letter-spacing:0;color:#52677b}
+.jewelry-cover figcaption span{font-size:11px;text-align:right}
+@media(max-width:900px){.story-visit-grid{grid-template-columns:minmax(0,1.2fr) minmax(190px,.8fr);gap:42px}.story-visit figure{width:min(100%,290px)}.jewelry-cover h1{font-size:clamp(56px,9vw,78px)}.jewelry-cover .jewelry-photo-frame img{max-height:400px}}
+@media(max-width:620px){.story-visit-grid{grid-template-columns:1fr;gap:30px}.story-visit figure{width:min(100%,300px);justify-self:start}.story-visit-copy h2{font-size:44px}.jewelry-cover{padding:58px 0 48px}.jewelry-cover h1{font-size:clamp(52px,12vw,66px)}.jewelry-cover h1 em{white-space:normal}.jewelry-beadwork{width:100%}.jewelry-cover .jewelry-photo-frame img{max-height:none;object-fit:contain}.jewelry-cover figcaption{display:block}.jewelry-cover figcaption span{display:block;margin-top:4px;text-align:left}}
