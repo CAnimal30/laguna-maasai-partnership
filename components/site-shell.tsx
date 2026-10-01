@@ -1,9 +1,9 @@
 /* oxlint-disable jsx-a11y/no-noninteractive-element-interactions -- Native details remains keyboard-operable; delegated clicks close links and Escape restores summary focus. */
-/* oxlint-disable next/no-html-link-for-pages -- Native navigation intentionally avoids client-router dependency for this informational site. */
+/* oxlint-disable next/no-html-link-for-pages -- Internal route clicks are intercepted by the app router; fragment and external anchors remain native. */
 'use client';
 
-import { Sprout } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 const links = [
@@ -14,7 +14,7 @@ const links = [
 ];
 
 export function Wordmark() {
-  return <a className="wordmark" href="/" aria-label="Return to the Laguna Maasai Partnership home page"><Sprout className="wordmark-leaf" aria-hidden="true" strokeWidth={1.2} /><span>Laguna Maasai<br />Partnership</span></a>;
+  return <Link className="wordmark" href="/" aria-label="Return to the Laguna Maasai Partnership home page"><img src="/laguna-maasai-wordmark.png" alt="Laguna Maasai Partnership" /></Link>;
 }
 
 export function Header() {
@@ -27,14 +27,15 @@ export function Header() {
     window.addEventListener('scroll', update, { passive: true });
     return () => { cancelAnimationFrame(initialUpdate); window.removeEventListener('scroll', update); };
   }, []);
-  return <header className={`site-header${isScrolled ? ' is-condensed' : ''}`}><div className="header-inner"><Wordmark /><nav className="desktop-nav" aria-label="Primary navigation">{links.map((link) => <a href={link.href} key={link.href} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</a>)}</nav><a className="header-support" href="/get-involved#support"><span>Support the Partnership</span><b aria-hidden="true">→</b></a><details className="mobile-menu" ref={menuRef} onKeyDown={(event) => { if (event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus(); } }} onClick={(event) => { if ((event.target as HTMLElement).closest('a') && menuRef.current) menuRef.current.open = false; }}><summary aria-label="Toggle navigation"><i></i><i></i></summary><nav aria-label="Mobile navigation">{links.map((link) => <a href={link.href} key={link.href} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</a>)}<a className="button button-primary" href="/get-involved#support">Support the Partnership</a></nav></details></div></header>;
+  return <header className={`site-header${isScrolled ? ' is-condensed' : ''}`}><div className="header-inner"><Wordmark /><nav className="desktop-nav" aria-label="Primary navigation">{links.map((link) => <Link href={link.href} key={link.href} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</Link>)}</nav><Link className="header-support" href="/get-involved#support"><span>Support the Partnership</span><b aria-hidden="true">→</b></Link><details className="mobile-menu" ref={menuRef} onKeyDown={(event) => { if (event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus(); } }} onClick={(event) => { if ((event.target as HTMLElement).closest('a') && menuRef.current) menuRef.current.open = false; }}><summary aria-label="Toggle navigation"><i></i><i></i></summary><nav aria-label="Mobile navigation">{links.map((link) => <Link href={link.href} key={link.href} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</Link>)}<Link className="button button-primary" href="/get-involved#support">Support the Partnership</Link></nav></details></div></header>;
 }
 
 export function Footer() {
-  return <footer className="site-footer"><div className="frame footer-grid"><div><Wordmark /><p>A student-led initiative within<br />Laguna Beach High School Model United Nations.</p></div><div className="footer-location"><p>Laguna Beach, California, USA</p><p>Partnership details are being reviewed before public launch.</p></div><nav aria-label="Footer navigation">{links.map((link) => <a href={link.href} key={link.href}>{link.label}</a>)}<a href="/credits">Credits</a></nav></div><div className="frame footer-bottom"><span>© Laguna Maasai Partnership</span><span>Laguna Beach ↔ Oloolaimutia, Kenya</span></div></footer>;
+  return <footer className="site-footer"><div className="frame footer-grid"><div><Wordmark /><p>A student-led initiative within<br />Laguna Beach High School Model United Nations.</p></div><div className="footer-location"><p>Laguna Beach, California, USA</p><p>Partnership details are being reviewed before public launch.</p></div><nav aria-label="Footer navigation">{links.map((link) => <Link href={link.href} key={link.href}>{link.label}</Link>)}<Link href="/credits">Credits</Link></nav></div><div className="frame footer-bottom"><span>© Laguna Maasai Partnership</span><span>Laguna Beach ↔ Oloolaimutia, Kenya</span></div></footer>;
 }
 
 function SiteEffects() {
+  const router = useRouter();
   useEffect(() => {
     const openLinkedRecord = () => {
       const target = document.getElementById(window.location.hash.slice(1));
@@ -45,15 +46,29 @@ function SiteEffects() {
     return () => window.removeEventListener('hashchange', openLinkedRecord);
   }, []);
   useEffect(() => {
+    const navigateInternally = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const anchor = (event.target as HTMLElement).closest('a');
+      if (!(anchor instanceof HTMLAnchorElement) || anchor.target || anchor.hasAttribute('download')) return;
+      const url = new URL(anchor.href, window.location.href);
+      if (url.origin !== window.location.origin || !url.pathname.startsWith('/') || anchor.hasAttribute('data-native-navigation')) return;
+      if (url.pathname === window.location.pathname && url.search === window.location.search) return;
+      event.preventDefault();
+      router.push(`${url.pathname}${url.search}${url.hash}`);
+    };
+    document.addEventListener('click', navigateInternally);
+    return () => document.removeEventListener('click', navigateInternally);
+  }, [router]);
+  useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
-    const targets = document.querySelectorAll<HTMLElement>('.reveal');
+    const targets = document.querySelectorAll<HTMLElement>('.home-introduction,.places-section,.work-feature,.jewelry-editorial,.invitation,.story-cover,.story-photo,.story-reading,.process-section,.timeline-section,.archive,.availability-section,.participation-section,.support-details,.faq-section,.credits-page,.desk-feature,.project-teasers>a,.participation-card');
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.remove('reveal-pending');
         observer.unobserve(entry.target);
       }
     }), { threshold: 0.12 });
-    targets.forEach((target) => { if (target.getBoundingClientRect().top > window.innerHeight) target.classList.add('reveal-pending'); observer.observe(target); });
+    targets.forEach((target) => { target.classList.add('reveal'); if (target.getBoundingClientRect().top > window.innerHeight) target.classList.add('reveal-pending'); observer.observe(target); });
     return () => observer.disconnect();
   }, []);
   return null;
