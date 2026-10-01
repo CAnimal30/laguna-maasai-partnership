@@ -25,3 +25,34 @@
 .wordmark{gap:0;font-size:inherit;letter-spacing:0}.wordmark img{display:block;width:176px;height:auto;max-height:80px;object-fit:contain;transition:transform .25s ease}.wordmark:hover img{transform:translateY(-1px) scale(1.025)}.site-footer .wordmark img{width:195px;max-height:none}.header-mark{display:inline-flex;align-items:center;width:52px;height:58px;transition:transform .2s ease}.header-mark img{display:block;width:100%;height:100%;object-fit:contain}.header-mark:hover{transform:scale(1.04)}
 .story-photo{margin:0 auto 52px}.story-photo img{width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line)}.story-photo figcaption{margin-top:12px}
 @media(prefers-reduced-motion:no-preference){.project-teasers>a,.participation-card,.desk-feature,.jewelry-editorial figure img{transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease,background .28s ease}.project-teasers>a:hover,.participation-card:hover{transform:translateY(-4px)}.jewelry-editorial figure img:hover{transform:rotate(-1deg) translateY(-4px);box-shadow:20px 23px 0 #c9b69680}.reveal{transition:opacity .55s ease,transform .55s ease}.reveal-pending{opacity:0;transform:translateY(16px)}}
+
+/* The supplied emblem and gold wordmark form one responsive brand lockup. */
+.brand-lockup{display:inline-flex;align-items:center;gap:10px;width:max-content;line-height:1;text-decoration:none}
+.brand-lockup img{display:block;flex:none;width:52px;height:58px;object-fit:contain;transition:width .2s ease,height .2s ease}
+.brand-wordmark{display:grid;gap:3px;color:var(--sun);font-family:var(--serif);font-size:18px;font-weight:500;line-height:.95;letter-spacing:.025em;transition:font-size .2s ease}
+.header-brand{min-width:0}
+.site-header.is-condensed .brand-lockup img{width:41px;height:46px}
+.site-header.is-condensed .brand-wordmark{font-size:14px}
+.desktop-nav a{padding:4px 0 2px}
+.site-footer .brand-lockup img{width:58px;height:64px}
+.site-footer .brand-wordmark{font-size:22px}
+.site-header.is-condensed .header-inner{min-height:66px}
+.hero-copy .eyebrow{max-width:600px;margin-bottom:24px;font-size:clamp(13px,1.2vw,16px);line-height:1.45;letter-spacing:.09em}
+.hero-summary{max-width:500px}
+.desk-feature{grid-template-columns:.84fr 1.16fr;align-items:stretch}
+.desk-number{min-height:350px;padding:28px 34px;gap:18px}
+.desk-number strong{margin:0;font-size:clamp(132px,13vw,174px);line-height:.84}
+.desk-number>span:last-child{font-size:16px;line-height:1.4;text-align:center}
+.desk-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(28px,4vw,48px)}
+.desk-copy h3{font-size:clamp(38px,4.2vw,50px);line-height:1.04}
+.desk-copy>p:not(.eyebrow){max-width:540px;font-size:16px;line-height:1.65}
+.story-photo figcaption{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 18px;margin-top:14px;color:#354c62;font-size:14px;line-height:1.5;letter-spacing:0}
+.photo-caption-title{font-weight:600;color:var(--forest-deep)}
+.photo-caption-context{margin-left:auto;color:#52677b;font-size:12px}
+.jewelry-cover figure{width:min(100%,560px);max-width:560px;justify-self:end;transform:none}
+.jewelry-photo-frame{width:100%;aspect-ratio:4/3;overflow:hidden;padding:12px;background:#f3e9da;box-shadow:0 22px 52px #1a2b3b24}
+.jewelry-cover .jewelry-photo-frame img{width:100%;height:100%;border:0;object-fit:cover;object-position:center 52%;box-shadow:none;transform:none}
+.jewelry-cover figcaption{margin:13px 2px 0;font-size:12px;line-height:1.55;letter-spacing:0}
+@media(max-width:1100px){.brand-lockup{gap:8px}.brand-lockup img{width:46px;height:52px}.brand-wordmark{font-size:16px}.site-header.is-condensed .brand-lockup img{width:36px;height:41px}.site-header.is-condensed .brand-wordmark{font-size:13px}}
+@media(max-width:900px){.site-header:not(.is-condensed) .brand-lockup img{width:50px;height:56px}.site-header.is-condensed .brand-lockup img{width:39px;height:44px}.desk-feature{grid-template-columns:.84fr 1.16fr}.desk-number{min-height:315px}.desk-number strong{font-size:clamp(125px,17vw,160px)}.desk-copy{padding:30px}.jewelry-cover figure{justify-self:center}}
+@media(max-width:620px){.brand-lockup{gap:8px}.site-header:not(.is-condensed) .brand-lockup img{width:45px;height:50px}.site-header:not(.is-condensed) .brand-wordmark{font-size:15px}.site-header.is-condensed .brand-lockup img{width:36px;height:40px}.site-header.is-condensed .brand-wordmark{font-size:12px}.site-footer .brand-lockup img{width:54px;height:60px}.site-footer .brand-wordmark{font-size:20px}.hero-copy .eyebrow{max-width:370px;font-size:13px;letter-spacing:.07em}.desk-feature{grid-template-columns:1fr}.desk-number{min-height:255px;padding:24px;gap:12px}.desk-number strong{font-size:clamp(126px,38vw,164px)}.desk-number>span:last-child{font-size:16px}.desk-copy{padding:28px 24px}.desk-copy h3{font-size:40px}.desk-copy>p:not(.eyebrow){font-size:16px}.story-photo figcaption{gap:4px 12px;font-size:13px}.photo-caption-context{width:100%;margin-left:0;font-size:11px}.jewelry-cover figure{width:100%;max-width:480px}.jewelry-photo-frame{padding:9px}}

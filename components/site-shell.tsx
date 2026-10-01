@@ -13,12 +13,8 @@ const links = [
   { href: '/get-involved', label: 'Get Involved' },
 ];
 
-export function Wordmark() {
-  return <Link className="wordmark" href="/" aria-label="Return to the Laguna Maasai Partnership home page"><img src="/laguna-maasai-wordmark-clean.png" alt="Laguna Maasai Partnership" /></Link>;
-}
-
-function HeaderMark({ onNavigate }: { onNavigate: (event: React.MouseEvent<HTMLAnchorElement>, href: string) => void }) {
-  return <Link className="header-mark" href="/" aria-label="Laguna Maasai Partnership home" onClick={(event) => onNavigate(event, '/')}><img src="/laguna-maasai-mark-header.png" alt="" /></Link>;
+function BrandLockup({ className, onNavigate }: { className: string; onNavigate?: (event: React.MouseEvent<HTMLAnchorElement>, href: string) => void }) {
+  return <Link className={`brand-lockup ${className}`} href="/" aria-label="Laguna Maasai Partnership home" onClick={onNavigate ? (event) => onNavigate(event, '/') : undefined}><img src="/laguna-maasai-mark-header.png" alt="" /><span className="brand-wordmark"><span>Laguna Maasai</span><span>Partnership</span></span></Link>;
 }
 
 export function Header() {
@@ -37,11 +33,11 @@ export function Header() {
     window.addEventListener('scroll', update, { passive: true });
     return () => { cancelAnimationFrame(initialUpdate); window.removeEventListener('scroll', update); };
   }, []);
-  return <header className={`site-header${isScrolled ? ' is-condensed' : ''}`}><div className="header-inner"><HeaderMark onNavigate={navigate} /><nav className="desktop-nav" aria-label="Primary navigation">{links.map((link) => <Link href={link.href} key={link.href} onClick={(event) => navigate(event, link.href)} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</Link>)}</nav><Link className="header-support" href="/get-involved#support" onClick={(event) => navigate(event, '/get-involved#support')}><span>Support the Partnership</span><b aria-hidden="true">→</b></Link><details className="mobile-menu" ref={menuRef} onKeyDown={(event) => { if (event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus(); } }} onClick={(event) => { if ((event.target as HTMLElement).closest('a') && menuRef.current) menuRef.current.open = false; }}><summary aria-label="Toggle navigation"><i></i><i></i></summary><nav aria-label="Mobile navigation">{links.map((link) => <Link href={link.href} key={link.href} onClick={(event) => navigate(event, link.href)} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</Link>)}<Link className="button button-primary" href="/get-involved#support" onClick={(event) => navigate(event, '/get-involved#support')}>Support the Partnership</Link></nav></details></div></header>;
+  return <header className={`site-header${isScrolled ? ' is-condensed' : ''}`}><div className="header-inner"><BrandLockup className="header-brand" onNavigate={navigate} /><nav className="desktop-nav" aria-label="Primary navigation">{links.map((link) => <Link href={link.href} key={link.href} onClick={(event) => navigate(event, link.href)} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</Link>)}</nav><Link className="header-support" href="/get-involved#support" onClick={(event) => navigate(event, '/get-involved#support')}><span>Support the Partnership</span><b aria-hidden="true">→</b></Link><details className="mobile-menu" ref={menuRef} onKeyDown={(event) => { if (event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus(); } }} onClick={(event) => { if ((event.target as HTMLElement).closest('a') && menuRef.current) menuRef.current.open = false; }}><summary aria-label="Toggle navigation"><i></i><i></i></summary><nav aria-label="Mobile navigation">{links.map((link) => <Link href={link.href} key={link.href} onClick={(event) => navigate(event, link.href)} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</Link>)}<Link className="button button-primary" href="/get-involved#support" onClick={(event) => navigate(event, '/get-involved#support')}>Support the Partnership</Link></nav></details></div></header>;
 }
 
 export function Footer() {
-  return <footer className="site-footer"><div className="frame footer-grid"><div><Wordmark /><p>A student-led initiative within<br />Laguna Beach High School Model United Nations.</p></div><div className="footer-location"><p>Laguna Beach, California, USA</p><p>Partnership details are being reviewed before public launch.</p></div><nav aria-label="Footer navigation">{links.map((link) => <Link href={link.href} key={link.href}>{link.label}</Link>)}<Link href="/credits">Credits</Link></nav></div><div className="frame footer-bottom"><span>© Laguna Maasai Partnership</span><span>Laguna Beach ↔ Oloolaimutia, Kenya</span></div></footer>;
+  return <footer className="site-footer"><div className="frame footer-grid"><div><BrandLockup className="footer-brand" /><p>A student-led initiative within<br />Laguna Beach High School Model United Nations.</p></div><div className="footer-location"><p>Laguna Beach, California, USA</p><p>Partnership details are being reviewed before public launch.</p></div><nav aria-label="Footer navigation">{links.map((link) => <Link href={link.href} key={link.href}>{link.label}</Link>)}<Link href="/credits">Credits</Link></nav></div><div className="frame footer-bottom"><span>© Laguna Maasai Partnership</span><span>Laguna Beach ↔ Oloolaimutia, Kenya</span></div></footer>;
 }
 
 function SiteEffects() {
