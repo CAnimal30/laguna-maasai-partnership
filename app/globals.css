@@ -89,3 +89,29 @@
 .jewelry-cover figcaption span{font-size:11px;text-align:right}
 @media(max-width:900px){.story-visit-grid{grid-template-columns:minmax(0,1.2fr) minmax(190px,.8fr);gap:42px}.story-visit figure{width:min(100%,290px)}.jewelry-cover h1{font-size:clamp(56px,9vw,78px)}.jewelry-cover .jewelry-photo-frame img{max-height:400px}}
 @media(max-width:620px){.story-visit-grid{grid-template-columns:1fr;gap:30px}.story-visit figure{width:min(100%,300px);justify-self:start}.story-visit-copy h2{font-size:44px}.jewelry-cover{padding:58px 0 48px}.jewelry-cover h1{font-size:clamp(52px,12vw,66px)}.jewelry-cover h1 em{white-space:normal}.jewelry-beadwork{width:100%}.jewelry-cover .jewelry-photo-frame img{max-height:none;object-fit:contain}.jewelry-cover figcaption{display:block}.jewelry-cover figcaption span{display:block;margin-top:4px;text-align:left}}
+
+/* Jewelry: let the supplied beadwork share the hero with its story, at its original crop. */
+.jewelry-cover{padding:76px 0 82px}
+.jewelry-cover .jewelry-editorial-grid{display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);align-items:center;gap:clamp(36px,5vw,72px)}
+.jewelry-cover .jewelry-copy{max-width:500px}
+.jewelry-cover .jewelry-copy h1{max-width:560px;font-size:clamp(56px,6.5vw,86px);line-height:.95}
+.jewelry-cover .jewelry-copy h1 em{white-space:normal}
+.jewelry-cover .jewelry-copy .lede{max-width:490px;margin-top:25px}
+.jewelry-cover .jewelry-copy .button{margin-top:25px}
+.jewelry-cover .jewelry-editorial-photo{width:100%;max-width:none;justify-self:stretch;align-self:center;margin:0;padding:0;transform:none}
+.jewelry-image-kicker{display:flex;justify-content:space-between;gap:18px;margin-bottom:13px;color:var(--clay);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.jewelry-image-kicker span{color:#52677b;font-size:10px;font-weight:500;letter-spacing:.06em}
+.jewelry-cover .jewelry-photo-frame{overflow:hidden;width:100%;padding:0;background:transparent;box-shadow:none}
+.jewelry-cover .jewelry-photo-frame img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;border:0;box-shadow:none;transform:none}
+.jewelry-cover .jewelry-editorial-photo figcaption{margin:12px 0 0;padding:12px 0 0;border-top:1px solid #263b5033;color:#52677b;font-size:12px;line-height:1.5;letter-spacing:0}
+.community-photo-archive{padding:86px 0 96px}
+.community-photo-heading{display:grid;grid-template-columns:1fr minmax(260px,.7fr);gap:60px;align-items:end;margin-bottom:38px}
+.community-photo-heading h2{font-size:clamp(44px,5vw,68px)}
+.community-photo-heading>p{max-width:480px;color:#52677b;font-size:14px}
+.community-photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:25px;align-items:start}
+.community-photo-grid figure img{width:100%;height:auto;border:1px solid #263b5020}
+.community-photo-grid figcaption{display:grid;gap:5px;margin-top:12px;font-size:12px;line-height:1.5;letter-spacing:0}
+.community-photo-grid figcaption strong{font-weight:600;color:var(--ink)}
+.community-photo-grid figcaption span{font-size:11px;color:#52677b}
+@media(max-width:900px){.jewelry-cover .jewelry-editorial-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:32px}.jewelry-cover .jewelry-copy h1{font-size:clamp(52px,7vw,72px)}.community-photo-heading{gap:35px}.community-photo-grid{gap:16px}}
+@media(max-width:680px){.jewelry-cover{padding:60px 0}.jewelry-cover .jewelry-editorial-grid{grid-template-columns:1fr;gap:38px}.jewelry-cover .jewelry-copy h1{font-size:clamp(54px,12vw,68px)}.jewelry-image-kicker{font-size:10px}.community-photo-archive{padding:60px 0}.community-photo-heading{grid-template-columns:1fr;gap:18px;margin-bottom:26px}.community-photo-grid{grid-template-columns:1fr;gap:27px}.community-photo-grid figure{max-width:600px}}
