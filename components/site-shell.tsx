@@ -14,20 +14,30 @@ const links = [
 ];
 
 export function Wordmark() {
-  return <Link className="wordmark" href="/" aria-label="Return to the Laguna Maasai Partnership home page"><img src="/laguna-maasai-wordmark.png" alt="Laguna Maasai Partnership" /></Link>;
+  return <Link className="wordmark" href="/" aria-label="Return to the Laguna Maasai Partnership home page"><img src="/laguna-maasai-wordmark-clean.png" alt="Laguna Maasai Partnership" /></Link>;
+}
+
+function HeaderMark({ onNavigate }: { onNavigate: (event: React.MouseEvent<HTMLAnchorElement>, href: string) => void }) {
+  return <Link className="header-mark" href="/" aria-label="Laguna Maasai Partnership home" onClick={(event) => onNavigate(event, '/')}><img src="/laguna-maasai-mark-header.png" alt="" /></Link>;
 }
 
 export function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const menuRef = useRef<HTMLDetailsElement>(null);
+  const navigate = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    router.push(href);
+  };
   useEffect(() => {
     const update = () => setIsScrolled(window.scrollY > 48);
     const initialUpdate = requestAnimationFrame(update);
     window.addEventListener('scroll', update, { passive: true });
     return () => { cancelAnimationFrame(initialUpdate); window.removeEventListener('scroll', update); };
   }, []);
-  return <header className={`site-header${isScrolled ? ' is-condensed' : ''}`}><div className="header-inner"><Wordmark /><nav className="desktop-nav" aria-label="Primary navigation">{links.map((link) => <Link href={link.href} key={link.href} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</Link>)}</nav><Link className="header-support" href="/get-involved#support"><span>Support the Partnership</span><b aria-hidden="true">→</b></Link><details className="mobile-menu" ref={menuRef} onKeyDown={(event) => { if (event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus(); } }} onClick={(event) => { if ((event.target as HTMLElement).closest('a') && menuRef.current) menuRef.current.open = false; }}><summary aria-label="Toggle navigation"><i></i><i></i></summary><nav aria-label="Mobile navigation">{links.map((link) => <Link href={link.href} key={link.href} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</Link>)}<Link className="button button-primary" href="/get-involved#support">Support the Partnership</Link></nav></details></div></header>;
+  return <header className={`site-header${isScrolled ? ' is-condensed' : ''}`}><div className="header-inner"><HeaderMark onNavigate={navigate} /><nav className="desktop-nav" aria-label="Primary navigation">{links.map((link) => <Link href={link.href} key={link.href} onClick={(event) => navigate(event, link.href)} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</Link>)}</nav><Link className="header-support" href="/get-involved#support" onClick={(event) => navigate(event, '/get-involved#support')}><span>Support the Partnership</span><b aria-hidden="true">→</b></Link><details className="mobile-menu" ref={menuRef} onKeyDown={(event) => { if (event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus(); } }} onClick={(event) => { if ((event.target as HTMLElement).closest('a') && menuRef.current) menuRef.current.open = false; }}><summary aria-label="Toggle navigation"><i></i><i></i></summary><nav aria-label="Mobile navigation">{links.map((link) => <Link href={link.href} key={link.href} onClick={(event) => navigate(event, link.href)} aria-current={pathname === link.href ? 'page' : undefined}>{link.label}</Link>)}<Link className="button button-primary" href="/get-involved#support" onClick={(event) => navigate(event, '/get-involved#support')}>Support the Partnership</Link></nav></details></div></header>;
 }
 
 export function Footer() {
