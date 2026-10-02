@@ -14,7 +14,7 @@ const links = [
 ];
 
 function BrandLockup({ className, onNavigate }: { className: string; onNavigate?: (event: React.MouseEvent<HTMLAnchorElement>, href: string) => void }) {
-  return <Link className={`brand-lockup ${className}`} href="/" aria-label="Laguna Maasai Partnership home" onClick={onNavigate ? (event) => onNavigate(event, '/') : undefined}><img src="/laguna-maasai-mark-header.png" alt="" /><span className="brand-wordmark"><span>Laguna Maasai</span><span>Partnership</span></span></Link>;
+  return <Link className={`brand-lockup ${className}`} href="/" aria-label="Laguna Maasai Partnership home" onClick={onNavigate ? (event) => onNavigate(event, '/') : undefined}><span className="brand-emblem"><img src="/laguna-maasai-mark-color.png" alt="" /></span><span className="brand-wordmark"><span>Laguna Maasai</span><span>Partnership</span></span></Link>;
 }
 
 export function Header() {

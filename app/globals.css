@@ -133,3 +133,13 @@
 .process-story-photo-portrait img{max-width:320px;margin-inline:auto}
 @media(max-width:900px){.process-grid li.process-story-row,.process-grid li.process-story-row-reverse{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:30px;padding:30px 0}.process-story-copy h3{font-size:38px}.process-story-photo img{height:auto}}
 @media(max-width:620px){.process-grid li.process-story-row,.process-grid li.process-story-row-reverse{grid-template-columns:1fr;gap:20px;padding:26px 0}.process-story-row-reverse .process-story-photo,.process-story-row-reverse .process-story-copy{grid-column:1;grid-row:auto}.process-story-copy h3{margin:14px 0 10px;font-size:34px}.process-story-photo img{height:auto;max-height:none}.process-story-photo-portrait img{max-width:min(100%,320px)}}
+
+/* Original blue-and-red emblem on a white roundel for contrast on navy. */
+.brand-lockup .brand-emblem{display:grid;place-items:center;flex:none;width:56px;height:56px;padding:4px;overflow:hidden;border:1px solid var(--sun);border-radius:50%;background:#fff;box-shadow:0 0 0 3px #ffffff12;transition:width .2s ease,height .2s ease,transform .2s ease}
+.brand-lockup .brand-emblem img{display:block;width:76%;height:76%;object-fit:contain}
+.brand-lockup:hover .brand-emblem{transform:scale(1.035)}
+.site-header .brand-wordmark,.site-footer .brand-wordmark{color:var(--cream)}
+.site-header.is-condensed .brand-lockup .brand-emblem{width:44px;height:44px;padding:3px}
+.site-footer .brand-lockup .brand-emblem{width:60px;height:60px;padding:4px}
+@media(max-width:1100px){.site-header:not(.is-condensed) .brand-lockup .brand-emblem{width:50px;height:50px}.site-header.is-condensed .brand-lockup .brand-emblem{width:40px;height:40px}}
+@media(max-width:620px){.site-header:not(.is-condensed) .brand-lockup .brand-emblem{width:48px;height:48px}.site-header.is-condensed .brand-lockup .brand-emblem{width:39px;height:39px}.site-footer .brand-lockup .brand-emblem{width:56px;height:56px}}
