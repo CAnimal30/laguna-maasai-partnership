@@ -146,11 +146,8 @@
 @media(max-width:620px){.site-header:not(.is-condensed) .brand-lockup .brand-emblem{width:40px;height:40px}.site-header.is-condensed .brand-lockup .brand-emblem{width:35px;height:35px}.site-footer .brand-lockup .brand-emblem{width:46px;height:46px}}
 
 /* Tactile paper details carry the homepage collage language into existing story sections. */
-.process-section{position:relative;isolation:isolate;overflow:hidden}
-.process-section>.frame,.archive-cover>.frame,.participate-cover>.frame{position:relative;z-index:1}
-.process-section::before,.archive-cover::after,.participate-cover::after{position:absolute;z-index:0;content:'';pointer-events:none;background-repeat:no-repeat;background-size:contain}
-.process-section::before{top:12%;right:0;width:min(42vw,560px);height:190px;background-image:url('/paper-layered-accent.webp');background-position:right center;opacity:.2}
+.archive-cover>.frame,.participate-cover>.frame{position:relative;z-index:1}
 .archive-cover,.participate-cover{position:relative;isolation:isolate;overflow:hidden}
-.archive-cover::after{top:5%;right:-12px;width:min(48vw,620px);height:210px;background-image:url('/paper-layered-accent.webp');background-position:right top;opacity:.82}
-.participate-cover::after{top:4%;right:clamp(22px,6vw,86px);width:clamp(240px,30vw,410px);height:90%;background-image:url('/paper-botanical-accent.webp');background-position:center right;opacity:.72}
-@media(max-width:620px){.process-section::before{top:8%;width:82vw;height:125px;opacity:.16}.archive-cover::after{right:-55px;width:75vw;height:140px;opacity:.45}.participate-cover::after{display:none}}
+.archive-cover .home-hero-art{background-image:url('/impact-cover-paper.webp');background-position:center}
+.participate-cover .home-hero-art{background-image:url('/get-involved-cover-paper.webp');background-position:center}
+@media(max-width:620px){.archive-cover .home-hero-art,.participate-cover .home-hero-art{background-position:60% center}}
