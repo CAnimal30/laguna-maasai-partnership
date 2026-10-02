@@ -135,11 +135,21 @@
 @media(max-width:620px){.process-grid li.process-story-row,.process-grid li.process-story-row-reverse{grid-template-columns:1fr;gap:20px;padding:26px 0}.process-story-row-reverse .process-story-photo,.process-story-row-reverse .process-story-copy{grid-column:1;grid-row:auto}.process-story-copy h3{margin:14px 0 10px;font-size:34px}.process-story-photo img{height:auto;max-height:none}.process-story-photo-portrait img{max-width:min(100%,320px)}}
 
 /* Original blue-and-red emblem on a white roundel for contrast on navy. */
-.brand-lockup .brand-emblem{display:grid;place-items:center;flex:none;width:56px;height:56px;padding:4px;overflow:hidden;border:1px solid var(--sun);border-radius:50%;background:#fff;box-shadow:0 0 0 3px #ffffff12;transition:width .2s ease,height .2s ease,transform .2s ease}
-.brand-lockup .brand-emblem img{display:block;width:76%;height:76%;object-fit:contain}
+.brand-lockup .brand-emblem{display:grid;place-items:center;flex:none;width:44px;height:44px;padding:0;overflow:hidden;border:1px solid var(--sun);border-radius:50%;background:#fff;box-shadow:0 0 0 2px #ffffff12;transition:width .2s ease,height .2s ease,transform .2s ease}
+.brand-lockup .brand-emblem img{display:block;width:92%;height:92%;object-fit:contain}
+.site-header:not(.is-condensed) .brand-lockup .brand-emblem img,.site-header.is-condensed .brand-lockup .brand-emblem img,.site-footer .brand-lockup .brand-emblem img{width:92%;height:92%}
 .brand-lockup:hover .brand-emblem{transform:scale(1.035)}
 .site-header .brand-wordmark,.site-footer .brand-wordmark{color:var(--cream)}
-.site-header.is-condensed .brand-lockup .brand-emblem{width:44px;height:44px;padding:3px}
-.site-footer .brand-lockup .brand-emblem{width:60px;height:60px;padding:4px}
-@media(max-width:1100px){.site-header:not(.is-condensed) .brand-lockup .brand-emblem{width:50px;height:50px}.site-header.is-condensed .brand-lockup .brand-emblem{width:40px;height:40px}}
-@media(max-width:620px){.site-header:not(.is-condensed) .brand-lockup .brand-emblem{width:48px;height:48px}.site-header.is-condensed .brand-lockup .brand-emblem{width:39px;height:39px}.site-footer .brand-lockup .brand-emblem{width:56px;height:56px}}
+.site-header.is-condensed .brand-lockup .brand-emblem{width:36px;height:36px}
+.site-footer .brand-lockup .brand-emblem{width:48px;height:48px}
+@media(max-width:1100px){.site-header:not(.is-condensed) .brand-lockup .brand-emblem{width:42px;height:42px}.site-header.is-condensed .brand-lockup .brand-emblem{width:36px;height:36px}}
+@media(max-width:620px){.site-header:not(.is-condensed) .brand-lockup .brand-emblem{width:40px;height:40px}.site-header.is-condensed .brand-lockup .brand-emblem{width:35px;height:35px}.site-footer .brand-lockup .brand-emblem{width:46px;height:46px}}
+
+/* Tactile paper details carry the homepage collage language into existing story sections. */
+.home-introduction,.process-section,.availability-section{position:relative;isolation:isolate;overflow:hidden}
+.home-introduction>.frame,.process-section>.frame,.availability-section>.frame{position:relative;z-index:1}
+.home-introduction::after,.process-section::before,.availability-section::after{position:absolute;z-index:0;content:'';pointer-events:none;background-repeat:no-repeat;background-size:contain}
+.home-introduction::after{top:4%;right:-18px;width:clamp(160px,20vw,270px);height:92%;background-image:url('/paper-botanical-accent.webp');background-position:right center;opacity:.14}
+.process-section::before{top:12%;right:0;width:min(42vw,560px);height:190px;background-image:url('/paper-layered-accent.webp');background-position:right center;opacity:.2}
+.availability-section::after{right:-35px;bottom:-12%;width:clamp(180px,24vw,320px);height:90%;background-image:url('/paper-botanical-accent.webp');background-position:right center;opacity:.12}
+@media(max-width:620px){.home-introduction::after{right:-55px;width:150px;opacity:.1}.process-section::before{top:8%;width:82vw;height:125px;opacity:.16}.availability-section::after{right:-75px;width:190px;opacity:.09}}
