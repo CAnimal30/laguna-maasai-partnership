@@ -81,5 +81,6 @@ function SiteEffects() {
 }
 
 export function Page({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <><SiteEffects /><a className="skip-link" href="#main">Skip to content</a><Header /><main id="main" tabIndex={-1}>{children}</main><Footer /></>;
+  const pathname = usePathname();
+  return <><SiteEffects /><a className="skip-link" href="#main">Skip to content</a><Header /><main key={pathname} className="page-arrive" id="main" tabIndex={-1}>{children}</main><Footer /></>;
 }
